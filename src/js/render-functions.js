@@ -1,25 +1,16 @@
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-
-const gallery = document.querySelector('.gallery');
+export const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
-
-const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-});
+console.dir(loader);
 
 export function createGallery(images) {
-    const markup = images.map(image => {
-        const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = image;
-        return (
+    return images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads}) => 
         `<li class="gallery-item">
-        <a href="${largeImageURL}">
-            <img src="${webformatURL}" alt="${tags}" />
-        </a>
+            <a href="${largeImageURL}" class="gallery-link">
+                <img class="gallery-img" src="${webformatURL}" alt="${tags}" />
+            </a>
             <div class="info">
                 <div class="info-colum">
-                    <p class="info-title">likes</p>
+                    <p class="info-title">Likes</p>
                     <p class="info-value">${likes}</p>
                 </div>
                 <div class="info-colum">
@@ -36,11 +27,8 @@ export function createGallery(images) {
                 </div>
             </div>
         </li>`
-        );
-    }).join('');
-
-    gallery.insertAdjacentHTML('beforeend', markup);
-    lightbox.refresh();
+        
+    ).join('');
 }
 
 export function clearGallery() {
@@ -48,15 +36,9 @@ export function clearGallery() {
 }
 
 export function showLoader() {
-    loader.classList.remove('hidden');
+    loader.style.display = "block";
 }
 
 export function hideLoader() {
-    loader.classList.add('hidden');
+    loader.style.display = "none";
 }
-
-
-
-// іконка
-// const iconPath = new URL('./img/iconError.svg', import.meta.url).href;
-// iconUrl: iconPath,
