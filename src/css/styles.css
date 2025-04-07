@@ -55,11 +55,22 @@
   min-width: 272px;
   padding: 8px 16px;
   background-color: #ffffff;
+  border: 1px solid #808080;
 
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #808080;
+  outline: none;
+}
+
+.input-search:hover {
+  border: 1px solid #000000;
+}
+
+.input-search:focus,
+.input-search:active {
+  border: 1px solid #4e75ff;
 }
 
 .btn-search {
@@ -76,6 +87,10 @@
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #ffffff;
+}
+
+.btn-search:hover {  
+  background: #6c8cff;
 }
 
 .info {
